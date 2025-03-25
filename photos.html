@@ -3,6 +3,7 @@
 <head>
     <title>archive</title>
     <link rel="icon" type="image/x-icon" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhefY6okws-velyhlWyNMI0lSZJWPy-7Npw5Sl7sFJedWtJ0ubnGb3Gor4zYd3wM7CoEegRgKZl3cZ2lHIM2lcdVVcGCMNso1qH2zNbFcSrhR5YT0CRr13Kk_lBhMpeQSWPYRW78OD5W-M/s1600/Exilim-EX-Z1000_1271.jpg">
+    <script src="https://use.fontawesome.com/releases/v5.0.13/js/all.js" integrity="sha384-xymdQtn1n3lH2wcu0qhcdaOpQwyoarkgLVxC/wZ5q7h9gHtxICrpcaSUfygqZGOe" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css" />
     <style>
         * {
@@ -11,7 +12,16 @@
         body {
             font-family: JetBrains Mono, monospace;
             margin: 0;
+            cursor: crosshair;
         }
+        .custom-cursor {
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: none;
+        }
+        
+
         footer {
             text-align: center;
             padding: 3px;
@@ -27,9 +37,27 @@
             left: 45%; 
             z-index: 10;
         }
+
+        header {
+            display: block;
+            top: 0;
+            left:0;
+            margin-top: 1%;
+            left: 45%; 
+            z-index: 10;
+            position: fixed;
+            color: white;
+            font-size: 20px;
+            padding: 3px;
+            text-align: center;
+        }
+
         .a {
             color: black;
             text-decoration: none;
+        }
+        .a:hover {
+            color: rgb(255, 255, 255);
         }
         .row {
             display: -ms-flexbox; /* IE 10 */
@@ -57,7 +85,10 @@
             --row-height: 300px;
 
             box-sizing: border-box;
-            padding: var(--gap);
+            padding-left: var(--gap);
+            padding-right: var(--gap);
+            padding-top: 0.56%;
+            padding-bottom: 0.5%;
 
             display: grid;
             grid-template-columns: repeat(var(--num-cols), 1fr);
@@ -91,7 +122,7 @@
         }
 
         .box:hover {
-            transform: scale(1.05,1.05);
+            transform: scale(1.02,1.02);
             z-index: 2;
         }
 
@@ -111,22 +142,144 @@
             opacity: 1;
             z-index: 4;
         }
+        /*.bg-image {
+            /* Add the blur effect */
+            /*filter: blur(8px);
+            -webkit-filter: blur(8px);
+            
+            /* Full height */
+            /*height: 100%; 
+            
+            /* Center and scale the image nicely */
+            /*background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }*/
+        
 
+        #myImg {
+            /*border-radius: 5px;*/
+            cursor: pointer;
+            transition: 0.3s;
+        }
 
+        #myImg:hover {opacity: 0.7;}
+
+        /* The Modal (background) */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            padding-top: 100px; /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: none; /* Enable scroll if needed */
+            transition: 2s;
+            z-index: 8;
+            backdrop-filter: blur(8px);
+            
+            /*filter: blur(8px);
+            -webkit-filter: blur(8px);
+            /*Full height*/
+            /*height: 100%; */
+            
+            /* Center and scale the image nicely */
+            /*background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;*/
+        }
+
+        /* Modal Content (image) */
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+            z-index: 6;
+            position: center;
+            left: 50%;
+        }
+
+        /* Caption of Modal Image */
+        #caption {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+            text-align: center;
+            left: 45%;
+            color: #ccc;
+            padding: 10px 0;
+            height: 150px;
+        }
+
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .close:hover, .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .ryan {
+            display: block;
+            z-index: 5; 
+            filter:blur(8px);
+            height: 100%;
+            /* Center and scale the image nicely */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .p {
+            filter: invert-backdrop(100%);
+            opacity: 0.5;
+            text-decoration: none;
+        }
 
     </style>
 </head>
 <body>
+    <p><a href="index.html" class="a"><header>Photos <i class="fas fa-crown" style="font-size: 24px;"></i></header></a>
+
     <div class="image-grid">
-        <img class="image-grid-col-2 image-grid-row-2 box" src="images/IMG_0859.jpg">
-        <div class="overlay">Photos</div>
-        <img class="box" src="images/IMG_1559.jpg">
-        <img class="box" src="images/IMG_1040.jpg">
-        <img class="box" src="images/IMG_0809.jpg">
-        <img class="box" src="images/IMG_2738.jpg">
-        <img class="box" src="images/IMG_1153.jpg">
-        <img class="box" src="images/IMG_3404.jpg">
+        <img class="image-grid-col-2 image-grid-row-2 box myImg" src="images/IMG_0859.jpg" alt="the boys" />
+        <img class="myImg box" src="images/IMG_1559.jpg" alt="niagara mist" />
+        <img class="myImg box" src="images/IMG_1040.jpg" alt="back to class" />
+        <img class="myImg box" src="images/IMG_0809.jpg" alt="jacky poo" />
+        <img class="myImg box" src="images/IMG_2738.jpg" alt="sledding gone wrong" />
+        <img class="myImg box" src="images/IMG_1153.jpg" alt="castle in the blue abyss" />
+        <img class="myImg box" src="images/IMG_1167.jpg" alt="princess naomi" />
+        <img class="myImg box" src="images/IMG_2832.jpg" alt="track gang" />
+        <img class="myImg box" src="images/IMG_3404.jpg" alt="mikey poles" />
+        <img class="myImg box" src="images/IMG_3434.jpg" alt="the pole needs vaulting" />
+        <img class="myImg box" src="images/IMG_3515.jpg" alt="6'7" />
+        <img class="myImg box" src="images/IMG_1457.jpg" alt="cherry day" />
+        <img class="myImg box" src="images/IMG_1513.jpg" alt="fry night" />
+        <img class="myImg box" src="images/IMG_1216.jpg" alt="jump" />
+        <img class="myImg box" src="images/IMG_1053.jpg" alt="flash" />
+        <img class="myImg box" src="images/IMG_3920.jpg" alt="niagara mist v2" />
+        <img class="myImg box" src="images/IMG_0915.jpg" alt="72 hour film festival 'nonsense' 2nd place" />
     </div>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+        <span class="close"></span>
+        <img class="modal-content" id="img01">
+        <div id="caption"></div>
+    </div>
+
     <script>
         var elements = document.getElementsByClassName("column");
 
@@ -139,8 +292,39 @@
                 elements[i].style.flex = "50%";
             }
         }
+
+        // Get the modal
+        var modal = document.getElementById("myModal");
+
+        // select images by class name
+        var img = document.getElementsByClassName('myImg');
+        var modalImg = document.getElementById("img01");
+        var captionText = document.getElementById("caption");
+        var bg = document.getElementsByClassName("ryan");
+
+        // show modal function
+        var showModal = function(){
+            modal.style.display = "block";
+            modalImg.src = this.src;
+            captionText.innerHTML = this.alt;
+            bg.style.opacity = 1;
+        }
+
+        // bind click event to each img
+        for (var i = 0; i < img.length; i++) {
+            img[i].addEventListener('click', showModal);
+        }
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("modal")[0];
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() { 
+            modal.style.display = "none";
+        }
+        
     </script>
     <footer>
-        <p><a>Instagram</a> / <a>Youtube</a></p>
+        <p><a class="a">Instagram</a> / <a class="a">Youtube</a></p>
     </footer> 
 </body>
