@@ -9,28 +9,39 @@
         * {
             box-sizing: border-box;
         }
-
         body {
             font-family: JetBrains Mono, monospace;
             margin: 0;
             cursor: crosshair;
         }
+        .custom-cursor {
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: none;
+        }
+        
 
         footer {
             text-align: center;
             padding: 3px;
-            position: fixed;
-            bottom: 0;
-            left: 45%;
+            /*background-color: rgb(113, 117, 119);*/position: absolute; 
+            font-family: JetBrains Mono, monospace;;
+            bottom: 0; 
+            left: 0; 
             z-index: 10;
             color: rgb(0, 0, 0);
             margin-bottom: 0;
+            position: fixed; 
+            bottom: 0; 
+            left: 45%; 
+            z-index: 10;
         }
 
         header {
             display: block;
             top: 0;
-            left: 0;
+            left:0;
             margin-top: 1%;
             left: 45%; 
             z-index: 10;
@@ -39,36 +50,54 @@
             font-size: 20px;
             padding: 3px;
             text-align: center;
+
         }
 
         .a {
             color: black;
             text-decoration: none;
         }
-        
-        .a:hover {
-            color: rgb(158, 158, 158);
+        .row {
+            display: -ms-flexbox; /* IE 10 */
+            display: flex;
+            -ms-flex-wrap: wrap; /* IE 10 */
+            flex-wrap: wrap;
+            padding: 0 4px;
+        }
+
+        /* Create two equal columns that sits next to each other */
+        .column {
+            -ms-flex: 50%; /* IE 10 */
+            flex: 50%;
+            padding: 0 4px;
+        }
+
+        .column img {
+            margin-top: 8px;
+            vertical-align: middle;
         }
 
         .image-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 16px;
-            padding: 20px;
+            --gap: 16px;
             --num-cols: 2;
             --row-height: 300px;
+
+            box-sizing: border-box;
+            padding-left: var(--gap);
+            padding-right: var(--gap);
+            padding-top: 0.56%;
+            padding-bottom: 0.5%;
+
+            display: grid;
+            grid-template-columns: repeat(var(--num-cols), 1fr);
+            grid-auto-rows: var(--row-height);
+            gap: var(--gap);
         }
 
         .image-grid > img {
+            height: 100%;
             width: 100%;
-            height: 300px;
             object-fit: cover;
-            cursor: pointer;
-            transition: transform 0.3s;
-        }
-
-        .image-grid > img:hover {
-            transform: scale(1.05);
         }
 
         .image-grid-col-2 {
@@ -77,45 +106,113 @@
 
         .image-grid-row-2 {
             grid-row: span 2;
-            height: 600px;
         }
+
+        @media screen and (max-width: 1024px) {
+            .image-grid {
+                --num-cols: 2;
+                --row-height: 200px;
+            }
+        }
+
+        .box {
+            transition: 0.5s;
+        }
+
+        .box:hover {
+            transform: scale(1.02,1.02);
+            z-index: 2;
+        }
+
+        .overlay {
+            position: absolute; 
+            top: 5%; 
+            /*background: rgb(0, 0, 0);
+            background: rgba(0, 0, 0, 0.5); /* Black see-through */
+            color: #f1f1f1; 
+            width: 100%;
+            /*transition: .5s ease;
+            opacity:0;*/
+            color: white;
+            font-size: 20px;
+            padding: 20px;
+            text-align: center;
+            opacity: 1;
+            z-index: 4;
+        }
+        /*.bg-image {
+            /* Add the blur effect */
+            /*filter: blur(8px);
+            -webkit-filter: blur(8px);
+            
+            /* Full height */
+            /*height: 100%; 
+            
+            /* Center and scale the image nicely */
+            /*background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }*/
+        
+
+        #myImg {
+            /*border-radius: 5px;*/
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #myImg:hover {opacity: 0.7;}
 
         /* The Modal (background) */
         .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            padding-top: 100px;
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            padding-top: 100px; /* Location of the box */
             left: 0;
             top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: none;
-            background-color: rgba(0,0,0,0.8);
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: none; /* Enable scroll if needed */
+            transition: 2s;
+            z-index: 8;
             backdrop-filter: blur(8px);
+            
+            /*filter: blur(8px);
+            -webkit-filter: blur(8px);
+            /*Full height*/
+            /*height: 100%; */
+            
+            /* Center and scale the image nicely */
+            /*background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;*/
         }
 
-        /* Modal Content */
+        /* Modal Content (image) */
         .modal-content {
             margin: auto;
             display: block;
             width: 80%;
             max-width: 700px;
-            width: 80%;
             z-index: 6;
             position: center;
             left: 50%;
-            margin-top: 4%;
         }
 
         /* Caption of Modal Image */
         #caption {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
             text-align: center;
+            left: 45%;
             color: #ccc;
             padding: 10px 0;
+            height: 150px;
         }
 
-        /* Close Button */
         .close {
             position: absolute;
             top: 15px;
@@ -132,29 +229,46 @@
             cursor: pointer;
         }
 
+        .ryan {
+            display: block;
+            z-index: 5; 
+            filter:blur(8px);
+            height: 100%;
+            /* Center and scale the image nicely */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .p {
+            filter: invert-backdrop(100%);
+            opacity: 0.5;
+            text-decoration: none;
+        }
+
     </style>
 </head>
 <body>
-    <p><a href="index.html" class="a"><header>Photos <i class="fas fa-crown" style="font-size: 24px;"></i></header></a>
+    <p><a href="index.html"><header>Photos <i class="fas fa-crown" style="font-size: 24px;"></i></header></a>
 
     <div class="image-grid">
-        <img class="image-grid-col-2 image-grid-row-2 myImg" src="images/IMG_0859.jpg" alt="the boys" />
-        <img class="myImg " src="images/IMG_1559.jpg" alt="niagara mist" />
-        <img class="myImg " src="images/IMG_1040.jpg" alt="back to class" />
-        <img class="myImg " src="images/IMG_0809.jpg" alt="jacky poo" />
-        <img class="myImg " src="images/IMG_2738.jpg" alt="sledding gone wrong" />
-        <img class="myImg " src="images/IMG_1153.jpg" alt="castle in the blue abyss" />
-        <img class="myImg " src="images/IMG_1167.jpg" alt="princess naomi" />
-        <img class="myImg " src="images/IMG_2832.jpg" alt="track gang" />
-        <img class="myImg " src="images/IMG_3404.jpg" alt="mikey poles" />
-        <img class="myImg " src="images/IMG_3434.jpg" alt="the pole needs vaulting" />
-        <img class="myImg " src="images/IMG_3515.jpg" alt="6'7" />
-        <img class="myImg " src="images/IMG_1457.jpg" alt="cherry day" />
-        <img class="myImg " src="images/IMG_1513.jpg" alt="fry night" />
-        <img class="myImg" src="images/IMG_1216.jpg" alt="jump" />
-        <img class="myImg " src="images/IMG_1053.jpg" alt="flash" />
-        <img class="myImg " src="images/IMG_3920.jpg" alt="niagara mist v2" />
-        <img class="myImg " src="images/IMG_0915.jpg" alt="72 hour film festival 'nonsense' 2nd place" />
+        <img class="image-grid-col-2 image-grid-row-2 box myImg" src="images/IMG_0859.jpg" alt="the boys" />
+        <img class="myImg box" src="images/IMG_1559.jpg" alt="niagara mist" />
+        <img class="myImg box" src="images/IMG_1040.jpg" alt="back to class" />
+        <img class="myImg box" src="https://github.com/chickenmanster/portfolio/blob/main/images/IMG_0809.JPG" alt="jacky poo" />
+        <img class="myImg box" src="images/IMG_2738.jpg" alt="sledding gone wrong" />
+        <img class="myImg box" src="images/IMG_1153.jpg" alt="castle in the blue abyss" />
+        <img class="myImg box" src="images/IMG_1167.jpg" alt="princess naomi" />
+        <img class="myImg box" src="images/IMG_2832.jpg" alt="track gang" />
+        <img class="myImg box" src="images/IMG_3404.jpg" alt="mikey poles" />
+        <img class="myImg box" src="images/IMG_3434.jpg" alt="the pole needs vaulting" />
+        <img class="myImg box" src="images/IMG_3515.jpg" alt="6'7" />
+        <img class="myImg box" src="images/IMG_1457.jpg" alt="cherry day" />
+        <img class="myImg box" src="images/IMG_1513.jpg" alt="fry night" />
+        <img class="myImg box" src="images/IMG_1216.jpg" alt="jump" />
+        <img class="myImg box" src="images/IMG_1053.jpg" alt="flash" />
+        <img class="myImg box" src="images/IMG_3920.jpg" alt="niagara mist v2" />
+        <img class="myImg box" src="images/IMG_0915.jpg" alt="72 hour film festival 'nonsense' 2nd place" />
     </div>
 
     <!-- The Modal -->
@@ -209,6 +323,6 @@
         
     </script>
     <footer>
-        <p><a class="a">Instagram</a> / <a class="a">Youtube</a></p>
+        <p><a>Instagram</a> / <a>Youtube</a></p>
     </footer> 
 </body>
