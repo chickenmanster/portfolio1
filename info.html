@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 
 <head>
     <title>archive</title>
@@ -276,10 +276,10 @@
     <p>We are always looking to outdo our previous cometion and submissions, and 25/26 will be our last years as students, so look out for us as we aim to reach a wider audience and create a segue into a post-collegiate era.</p>
     <img src="video/double blue.png" class="myImg" height="45%" width="45%" />
     <img src="images/IMG_0915.JPG" class="myImg" height="45%" width="45%" />
-    
+-->  
    
     <!-- The Modal -->
-    <div id="myModal" class="modal">
+ <!--    <div id="myModal" class="modal">
         <span class="close"></span>
         <img class="modal-content" id="img01">
         <div id="caption"></div>
@@ -332,4 +332,234 @@
     <footer>
         <p><a class="a" href="https://www.instagram.com/garrettwagersucks/">Instagram</a> / <a href="https://www.youtube.com/@garrettwager" class="a">Youtube</a> / <a class="a" href="mailto:chickenmanstergw@gmail.com">Contact</a> / <a class="a" href="photos.html" >Photos</a> / <a class="a" href="video.html" >Videos</a></p>
     </footer> 
+</body> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>archive</title>
+  <link rel="icon" type="image/x-icon" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhefY6okws-velyhlWyNMI0lSZJWPy-7Npw5Sl7sFJedWtJ0ubnGb3Gor4zYd3wM7CoEegRgKZl3cZ2lHIM2lcdVVcGCMNso1qH2zNbFcSrhR5YT0CRr13Kk_lBhMpeQSWPYRW78OD5W-M/s1600/Exilim-EX-Z1000_1271.jpg">
+  <script src="https://use.fontawesome.com/releases/v5.0.13/js/all.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    * { 
+        box-sizing: border-box; 
+    }
+    body {
+      font-family: JetBrains Mono, monospace;
+      margin: 0;
+      cursor: crosshair;
+      background-color: white;
+      color: black;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    body.dark-mode {
+      background-color: #121212;
+      color: #e0e0e0;
+    }
+
+    .dark-mode a { color: #ffffff; }
+    .dark-mode footer, .dark-mode header { color: #ccc; }
+
+    header {
+        position: relative;
+        text-align: center;
+        color: rgb(0, 0, 0);
+        font-size: 20px;
+        padding: 1px;
+        margin-top: 20px;
+        z-index: 10;
+    }
+
+    footer {
+        position: relative;
+        text-align: center;
+        padding: 1px;
+        font-family: JetBrains Mono, monospace;
+        color: black;
+        
+    }
+    .a {
+      color: black;
+      text-decoration: none;
+    }
+    .a:hover { color: #777777; }
+
+    .image-grid {
+      --gap: 16px;
+      --num-cols: 2;
+      --row-height: 300px;
+      display: grid;
+      grid-template-columns: repeat(var(--num-cols), 1fr);
+      grid-auto-rows: var(--row-height);
+      gap: var(--gap);
+      padding: 0 var(--gap);
+      /*padding-top: 0.56%;
+      padding-bottom: 0.5%;*/
+    }
+
+    .image-grid > img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    @media screen and (max-width: 1024px) {
+      .image-grid {
+        --num-cols: 2;
+        --row-height: 200px;
+      }
+    }
+
+    @media screen and (max-width: 480px) {
+      .image-grid {
+        padding-top: 0 !important;
+        --num-cols: 1;
+      }
+    }
+
+    .myImg {
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .myImg:hover { opacity: 0.7; }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 10;
+      padding-top: 100px;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      backdrop-filter: blur(8px);
+    }
+
+    .modal-content {
+      display: block;
+      margin: auto;
+      width: 80%;
+      max-width: 700px;
+    }
+
+    #caption {
+      text-align: center;
+      color: #ccc;
+      padding: 10px 0;
+    }
+
+    .close {
+      position: absolute;
+      top: 15px;
+      right: 35px;
+      color: #f1f1f1;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .close:hover { color: #bbb; }
+
+    #darkModeToggle {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      z-index: 20;
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <button id="darkModeToggle" title="Toggle dark mode">🌙</button>
+
+  <a class="a" href="index.html">
+    <header>About Me <i class="fas fa-crown" style="font-size: 24px;"></i></header>
+  </a>
+
+  <main >
+    <h1>I am Garrett Wager.</h1>
+    <h2>I am a (kinda) tall 3rd year student in IASC.</h2>
+    <h3>I aspire to create stories and inspire others through my artistic endeavours.</h3>
+    <h1>I use DaVinci Resolve to edit and colour-grade.</h1>
+
+    <div class="image-grid">
+      <img src="images/IMG_2800.JPG" class="myImg" />
+      <img src="images/IMG_2832.JPG" class="myImg" />
+      <img src="images/IMG_1172.JPG" class="myImg" />
+      <img src="images/IMG_2622.JPG" class="myImg" />
+    </div>
+
+    <h1>Awards</h1>
+    <h2>My crew and I have competed in 5 film competitions (so far), and have taken home 1 first place and 2 second place finishes.</h2>
+    <ul>
+      <li>72 Hour Film Fest 2023 (2nd): Flamingo</li>
+      <li>Render This 2023 (DQ): Scrambled</li>
+      <li>72 Hour Film Fest 2024 (2nd): Non-Sense</li>
+      <li>Render This 2024 (1st, Audience Choice): 7:39</li>
+      <li>Niagara Artist Centre Micro Movie Competition (Participated): Bear Witness</li>
+    </ul>
+    <p>We’re always looking to outdo our previous submissions, and 2025–26 will be our last years as students—look out for us as we aim to reach a wider audience and launch our post-collegiate era.</p>
+
+    <div class="image-grid">
+      <img src="video/double blue.png" class="myImg" />
+      <img src="images/IMG_0915.JPG" class="myImg" />
+    </div>
+  </main>
+
+  <!-- The Modal -->
+  <div id="myModal" class="modal">
+    <span class="close" id="modalClose">&times;</span>
+    <img class="modal-content" id="img01">
+    <div id="caption"></div>
+  </div>
+
+  <footer>
+    <p>
+      <a class="a" href="https://www.instagram.com/garrettwagersucks/">Instagram</a> /
+      <a href="https://www.youtube.com/@garrettwager" class="a">YouTube</a> /
+      <a class="a" href="mailto:chickenmanstergw@gmail.com">Contact</a> /
+      <a class="a" href="photos.html">Photos</a> /
+      <a class="a" href="video.html">Videos</a>
+    </p>
+  </footer>
+
+  <script>
+    // Modal functionality
+    const modal = document.getElementById("myModal");
+    const modalImg = document.getElementById("img01");
+    const captionText = document.getElementById("caption");
+    const modalClose = document.getElementById("modalClose");
+
+    document.querySelectorAll(".myImg").forEach(img => {
+      img.addEventListener("click", function () {
+        modal.style.display = "block";
+        modalImg.src = this.src;
+        captionText.innerHTML = this.alt || "";
+      });
+    });
+
+    modalClose.onclick = function () {
+      modal.style.display = "none";
+    };
+
+    // Dark mode toggle
+    const toggle = document.getElementById("darkModeToggle");
+    const prefersDark = localStorage.getItem("dark-mode") === "true";
+
+    if (prefersDark) {
+      document.body.classList.add("dark-mode");
+    }
+
+    toggle.addEventListener("click", () => {
+      document.body.classList.toggle("dark-mode");
+      localStorage.setItem("dark-mode", document.body.classList.contains("dark-mode"));
+    });
+  </script>
 </body>
+</html>

@@ -1,209 +1,446 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Archive</title>
-    <link rel="icon" type="image/x-icon" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhefY6okws-velyhlWyNMI0lSZJWPy-7Npw5Sl7sFJedWtJ0ubnGb3Gor4zYd3wM7CoEegRgKZl3cZ2lHIM2lcdVVcGCMNso1qH2zNbFcSrhR5YT0CRr13Kk_lBhMpeQSWPYRW78OD5W-M/s1600/Exilim-EX-Z1000_1271.jpg">
-    <script src="https://use.fontawesome.com/releases/v5.0.13/js/all.js" integrity="sha384-xymdQtn1n3lH2wcu0qhcdaOpQwyoarkgLVxC/wZ5q7h9gHtxICrpcaSUfygqZGOe" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="style.css" />
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+<!--  
+  <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Archive</title>
+        <link rel="icon" type="image/x-icon" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhefY6okws-velyhlWyNMI0lSZJWPy-7Npw5Sl7sFJedWtJ0ubnGb3Gor4zYd3wM7CoEegRgKZl3cZ2lHIM2lcdVVcGCMNso1qH2zNbFcSrhR5YT0CRr13Kk_lBhMpeQSWPYRW78OD5W-M/s1600/Exilim-EX-Z1000_1271.jpg">
+        <script src="https://use.fontawesome.com/releases/v5.0.13/js/all.js" integrity="sha384-xymdQtn1n3lH2wcu0qhcdaOpQwyoarkgLVxC/wZ5q7h9gHtxICrpcaSUfygqZGOe" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="style.css" />
+        <style>
+            * {
+                box-sizing: border-box;
+            }
 
-        body {
-            font-family: JetBrains Mono, monospace;
-            margin: 0;
-            cursor: crosshair;
-        }
+            body {
+                font-family: JetBrains Mono, monospace;
+                margin: 0;
+                cursor: crosshair;
+            }
 
-        footer {
-            text-align: center;
-            padding: 3px;
-            position: fixed;
-            bottom: 0;
-            left: 40%;
-            z-index: 10;
-            color: rgb(0, 0, 0);
-            margin-bottom: 0;
-        }
+            footer {
+                text-align: center;
+                padding: 3px;
+                position: fixed;
+                bottom: 0;
+                left: 40%;
+                z-index: 10;
+                color: rgb(0, 0, 0);
+                margin-bottom: 0;
+            }
 
-        header {
-            display: block;
-            top: 0;
-            left: 0;
-            margin-top: 1%;
-            left: 45%; 
-            z-index: 10;
-            position: fixed;
-            color: white;
-            font-size: 20px;
-            padding: 3px;
-            text-align: center;
-        }
+            header {
+                display: block;
+                top: 0;
+                left: 0;
+                margin-top: 1%;
+                left: 45%; 
+                z-index: 10;
+                position: fixed;
+                color: white;
+                font-size: 20px;
+                padding: 3px;
+                text-align: center;
+            }
 
-        .a {
-            color: black;
-            text-decoration: none;
-        }
-        
-        .a:hover {
-            color: rgb(187, 187, 187);
-        }
+            .a {
+                color: black;
+                text-decoration: none;
+            }
+            
+            .a:hover {
+                color: rgb(187, 187, 187);
+            }
 
-        .image-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 16px;
-            padding: 20px;
-            --num-cols: 2;
-            --row-height: 300px;
-        }
+            .image-grid {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+                padding: 20px;
+                --num-cols: 2;
+                --row-height: 300px;
+            }
 
-        .image-grid > img {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-            cursor: pointer;
-            transition: transform 0.3s;
-        }
+            .image-grid > img {
+                width: 100%;
+                height: 300px;
+                object-fit: cover;
+                cursor: pointer;
+                transition: transform 0.3s;
+            }
 
-        .image-grid > img:hover {
-            transform: scale(1.05);
-        }
+            .image-grid > img:hover {
+                transform: scale(1.05);
+            }
 
-        .image-grid-col-2 {
-            grid-column: span 2;
-        }
+            .image-grid-col-2 {
+                grid-column: span 2;
+            }
 
-        .image-grid-row-2 {
-            grid-row: span 2;
-            height: 600px;
-        }
+            .image-grid-row-2 {
+                grid-row: span 2;
+                height: 600px;
+            }
 
-        /* The Modal (background) */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            padding-top: 100px;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: none;
-            background-color: rgba(0,0,0,0.8);
-            backdrop-filter: blur(8px);
-        }
+            /* The Modal (background) */
+            .modal {
+                display: none;
+                position: fixed;
+                z-index: 1;
+                padding-top: 100px;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                overflow: none;
+                background-color: rgba(0,0,0,0.8);
+                backdrop-filter: blur(8px);
+            }
 
-        /* Modal Content */
-        .modal-content {
-            margin: auto;
-            display: block;
-            width: 80%;
-            max-width: 700px;
-            width: 80%;
-            z-index: 6;
-            position: center;
-            left: 50%;
-            margin-top: 4%;
-        }
+            /* Modal Content */
+            .modal-content {
+                margin: auto;
+                display: block;
+                width: 80%;
+                max-width: 700px;
+                width: 80%;
+                z-index: 6;
+                position: center;
+                left: 50%;
+                margin-top: 4%;
+            }
 
-        /* Caption of Modal Image */
-        #caption {
-            text-align: center;
-            color: #ccc;
-            padding: 10px 0;
-        }
+            /* Caption of Modal Image */
+            #caption {
+                text-align: center;
+                color: #ccc;
+                padding: 10px 0;
+            }
 
-        /* Close Button */
-        .close {
-            position: absolute;
-            top: 15px;
-            right: 35px;
-            color: #f1f1f1;
-            font-size: 40px;
-            font-weight: bold;
-            transition: 0.3s;
-        }
+            /* Close Button */
+            .close {
+                position: absolute;
+                top: 15px;
+                right: 35px;
+                color: #f1f1f1;
+                font-size: 40px;
+                font-weight: bold;
+                transition: 0.3s;
+            }
 
-        .close:hover, .close:focus {
-            color: #bbb;
-            text-decoration: none;
-            cursor: pointer;
-        }
+            .close:hover, .close:focus {
+                color: #bbb;
+                text-decoration: none;
+                cursor: pointer;
+            }
 
-    </style>
-</head>
-<body>
-    <header>
-        <p><a class="a" href="index.html">Videos <i class="fas fa-crown" style="font-size: 24px;"></i></a></p>
-    </header>
+        </style>
+    </head>
+    <body>
+        <header>
+            <p><a class="a" href="index.html">Videos <i class="fas fa-crown" style="font-size: 24px;"></i></a></p>
+        </header>
 
-    <div class="image-grid">
-        <img class="image-grid-col-2 myImg" style="height: 600px;" src="video/photo_pov.png" alt="Bear Witness" data-video-id="AR63Mewo4QI?si=tKxmJ-Nw-TD6Yu-b" />
-        <img class="myImg" src="video/lasso.png" alt="The Milkman" data-video-id="pxXxujt55oA?si=cUxl1TSFYQfz1by4" />
-        <img class="myImg" src="video/split.png" alt="Burning Death" data-video-id="jxzcQS0UWsY?si=7zR7gCsyTG7CQSUo" />
-        <img class="myImg" src="video/brainrot.png" alt="Brain Rot" data-video-id="hQKOuUndLjQ?si=tv0fB5XJL9WTrYio" />
-        <img class="myImg" src="video/739.png" alt="7:39" data-video-id="ZXOwATFhx6A?si=gqVP623u89HBdTzT" />
-        <img class="myImg" src="video/relax.png" alt="R E L A X" data-video-id="mfNW0rIjAhA?si=v7lvXFh_Iy3cDlNF" />
-        <img class="myImg" src="video/confused.png" alt="Youthful Confusion" data-video-id="TKW-HEmgAoc?si=R4DcSe_FVLpsgu0v" />
-        <img class="myImg" src="video/road.JPG" alt="on the road" data-video-id="mh68euABDQY?si=Qmb7QPe8uxsMO8BZ" />
-        <img class="myImg" src="video/kiwi2.png" alt="Kiwi life" data-video-id="gISr3EaSktc?si=H8aFQlg7SoyxH2iC" />
-        <img class="myImg" src="video/step2.png" alt="Step After Step" data-video-id="KwuP7D31f_k?si=ITYLaddBv4hrF8Jz" />
-        <img class="myImg" src="video/album art.jpg" alt="Podcast: Brock XC" data-video-id="9lfQpZitWPQ?si=3awH6xu2Z2NcTb5l" />
-        <img class="myImg" src="video/day.png" alt="THE DAY" data-video-id="zXJdm9Mm2J8?si=fd58GQVzK0e8ql0_" />
-        <img class="myImg" src="video/nonsense.png" alt="Non-Sense" data-video-id="w2dloV1WkBw?si=JTcT0dzDc8g5QQ1P" />
-        <img class="myImg" src="video/work.png" alt="Gotta Work" data-video-id="CVz2QE6uZRE?si=D-0oet8EgfdeIAmV" />
-        <img class="myImg" src="video/stickah.png" alt="sticker" data-video-id="WnqGVVMSvBM?si=Jua2jIzUzvEpIvAN" />
-    </div>
+        <div class="image-grid">
+            <img class="image-grid-col-2 myImg" style="height: 600px;" src="video/photo_pov.png" alt="Bear Witness" data-video-id="AR63Mewo4QI?si=tKxmJ-Nw-TD6Yu-b" />
+            <img class="myImg" src="video/lasso.png" alt="The Milkman" data-video-id="pxXxujt55oA?si=cUxl1TSFYQfz1by4" />
+            <img class="myImg" src="video/split.png" alt="Burning Death" data-video-id="jxzcQS0UWsY?si=7zR7gCsyTG7CQSUo" />
+            <img class="myImg" src="video/brainrot.png" alt="Brain Rot" data-video-id="hQKOuUndLjQ?si=tv0fB5XJL9WTrYio" />
+            <img class="myImg" src="video/739.png" alt="7:39" data-video-id="ZXOwATFhx6A?si=gqVP623u89HBdTzT" />
+            <img class="myImg" src="video/relax.png" alt="R E L A X" data-video-id="mfNW0rIjAhA?si=v7lvXFh_Iy3cDlNF" />
+            <img class="myImg" src="video/confused.png" alt="Youthful Confusion" data-video-id="TKW-HEmgAoc?si=R4DcSe_FVLpsgu0v" />
+            <img class="myImg" src="video/road.JPG" alt="on the road" data-video-id="mh68euABDQY?si=Qmb7QPe8uxsMO8BZ" />
+            <img class="myImg" src="video/kiwi2.png" alt="Kiwi life" data-video-id="gISr3EaSktc?si=H8aFQlg7SoyxH2iC" />
+            <img class="myImg" src="video/step2.png" alt="Step After Step" data-video-id="KwuP7D31f_k?si=ITYLaddBv4hrF8Jz" />
+            <img class="myImg" src="video/album art.jpg" alt="Podcast: Brock XC" data-video-id="9lfQpZitWPQ?si=3awH6xu2Z2NcTb5l" />
+            <img class="myImg" src="video/day.png" alt="THE DAY" data-video-id="zXJdm9Mm2J8?si=fd58GQVzK0e8ql0_" />
+            <img class="myImg" src="video/nonsense.png" alt="Non-Sense" data-video-id="w2dloV1WkBw?si=JTcT0dzDc8g5QQ1P" />
+            <img class="myImg" src="video/work.png" alt="Gotta Work" data-video-id="CVz2QE6uZRE?si=D-0oet8EgfdeIAmV" />
+            <img class="myImg" src="video/stickah.png" alt="sticker" data-video-id="WnqGVVMSvBM?si=Jua2jIzUzvEpIvAN" />
+        </div>
+    -->
+        <!-- The Modal -->
+    <!--
+        <div id="myModal" class="modal">
+            <span class="close"></span>
+            <iframe id="videoIframe" width="80%" height="400" margin-top="50%" class="modal-content" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <div id="caption"></div>
+        </div>
 
-    <!-- The Modal -->
-    <div id="myModal" class="modal">
-        <span class="close"></span>
-        <iframe id="videoIframe" width="80%" height="400" margin-top="50%" class="modal-content" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        <div id="caption"></div>
-    </div>
+        <footer>
+            <p><a class="a" href="https://www.instagram.com/garrettwagersucks/">Instagram</a> / <a href="https://www.youtube.com/@garrettwager" class="a">Youtube</a> / <a href="info.html" class="a">About</a> / <a class="a" href="mailto:chickenmanstergw@gmail.com">Contact</a> / <a class="a" href="photos.html" >Photos</a></p>
+        </footer>
 
-    <footer>
-        <p><a class="a" href="https://www.instagram.com/garrettwagersucks/">Instagram</a> / <a href="https://www.youtube.com/@garrettwager" class="a">Youtube</a> / <a href="info.html" class="a">About</a> / <a class="a" href="mailto:chickenmanstergw@gmail.com">Contact</a> / <a class="a" href="photos.html" >Photos</a></p>
-    </footer>
+        <script>
+            // Get the modal
+            var modal = document.getElementById("myModal");
+            var iframe = document.getElementById("videoIframe");
+            var captionText = document.getElementById("caption");
+            var closeBtn = document.getElementsByClassName("close")[0];
 
-    <script>
-        // Get the modal
-        var modal = document.getElementById("myModal");
-        var iframe = document.getElementById("videoIframe");
-        var captionText = document.getElementById("caption");
-        var closeBtn = document.getElementsByClassName("close")[0];
+            // Get all images
+            var images = document.getElementsByClassName("myImg");
 
-        // Get all images
-        var images = document.getElementsByClassName("myImg");
-
-        // Open the modal and set the video src
-        Array.from(images).forEach(function(image) {
-            image.addEventListener("click", function() {
-                var videoId = image.getAttribute("data-video-id");
-                console.log("Video ID: ", videoId); // Debugging log
-                iframe.src = "https://www.youtube.com/embed/" + videoId;
-                captionText.innerHTML = image.alt;
-                modal.style.display = "block";
+            // Open the modal and set the video src
+            Array.from(images).forEach(function(image) {
+                image.addEventListener("click", function() {
+                    var videoId = image.getAttribute("data-video-id");
+                    console.log("Video ID: ", videoId); // Debugging log
+                    iframe.src = "https://www.youtube.com/embed/" + videoId;
+                    captionText.innerHTML = image.alt;
+                    modal.style.display = "block";
+                });
             });
-        });
 
-        // Close the modal
-        closeBtn.onclick = function() {
-            modal.style.display = "none";
-            iframe.src = ""; // Stop the video when modal is closed
-        }
-
-        // Close the modal if user clicks outside of the modal content
-        window.onclick = function(event) {
-            if (event.target == modal) {
+            // Close the modal
+            closeBtn.onclick = function() {
                 modal.style.display = "none";
                 iframe.src = ""; // Stop the video when modal is closed
             }
-        }
-    </script>
+
+            // Close the modal if user clicks outside of the modal content
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                    iframe.src = ""; // Stop the video when modal is closed
+                }
+            }
+        </script>
+    </body>
+    </html>
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Archive</title>
+  <link rel="icon" type="image/x-icon" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhefY6okws-velyhlWyNMI0lSZJWPy-7Npw5Sl7sFJedWtJ0ubnGb3Gor4zYd3wM7CoEegRgKZl3cZ2lHIM2lcdVVcGCMNso1qH2zNbFcSrhR5YT0CRr13Kk_lBhMpeQSWPYRW78OD5W-M/s1600/Exilim-EX-Z1000_1271.jpg">
+  <script src="https://use.fontawesome.com/releases/v5.0.13/js/all.js" crossorigin="anonymous"></script>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'JetBrains Mono', monospace;
+      cursor: crosshair;
+      background: #fff;
+      color: #000;
+    }
+
+    header, footer {
+      width: 100%;
+      text-align: center;
+    }
+
+    header {
+      display: block;
+      top: 0;
+      left: 0;
+      margin-top: 0; /* Changed from 1% to 0 to remove space */
+      z-index: 10;
+      position: relative;
+      color: white;
+      font-size: 20px;
+      text-align: center;
+    }
+
+    header a {
+      color: rgb(0, 0, 0);
+      text-decoration: none;
+    }
+
+    footer {
+      position: relative;
+      bottom: 0;
+      background-color: #fff;
+      color: #000;
+      padding: 12px 10px;
+      font-size: 14px;
+      border-top: 1px solid #ccc;
+      left: 0;
+      margin-top: 0; /* Remove space above footer */
+    }
+
+    .a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .a:hover {
+      color: #888;
+    }
+
+    .image-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 16px;
+      padding: 0; /* Ensure no padding at the top */
+      margin-top: 0; /* Also set margin to 0 just in case */
+    }
+
+    .image-grid img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .image-grid img:hover {
+      transform: scale(1.05);
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.689);
+      backdrop-filter: blur(6px);
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    .modal iframe {
+      width: 90%;
+      max-width: 900px;
+      height: 50vh;
+    }
+
+    .close {
+      position: absolute;
+      top: 15px;
+      right: 30px;
+      font-size: 36px;
+      color: rgba(0, 0, 0, 0.526);
+      cursor: pointer;
+    }
+
+    .close:hover {
+      color: #bbb;
+    }
+
+    #caption {
+      color: #ccc;
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    @media (max-width: 600px) {
+      footer {
+        font-size: 12px;
+        padding: 10px;
+      }
+
+      .image-grid {
+        padding: 0px 10px 0; /* Remove bottom padding for better fit */
+      }
+
+      .image-grid img {
+        height: 180px;
+      }
+
+      .modal iframe {
+        height: 40vh;
+      }
+    }
+
+    @media (min-width: 1200px) {
+      .image-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      }
+
+      .image-grid img {
+        height: 300px;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!--  Fixed Header -->
+  <header>
+    <p>
+      <a href="index.html">Videos <i class="fas fa-crown"></i></a>
+    </p>
+  </header>
+
+  <!-- Responsive Image Grid -->
+  <div class="image-grid">
+    <img class="myImg" src="video/photo_pov.png" alt="Bear Witness" data-video-id="AR63Mewo4QI" />
+    <img class="myImg" src="video/lasso.png" alt="The Milkman" data-video-id="pxXxujt55oA" />
+    <img class="myImg" src="video/split.png" alt="Burning Death" data-video-id="jxzcQS0UWsY" />
+    <img class="myImg" src="video/brainrot.png" alt="Brain Rot" data-video-id="hQKOuUndLjQ" />
+    <img class="myImg" src="video/739.png" alt="7:39" data-video-id="ZXOwATFhx6A" />
+    <img class="myImg" src="video/relax.png" alt="R E L A X" data-video-id="mfNW0rIjAhA" />
+    <img class="myImg" src="video/confused.png" alt="Youthful Confusion" data-video-id="TKW-HEmgAoc" />
+    <img class="myImg" src="video/road.JPG" alt="on the road" data-video-id="mh68euABDQY" />
+    <img class="myImg" src="video/kiwi2.png" alt="Kiwi life" data-video-id="gISr3EaSktc" />
+    <img class="myImg" src="video/step2.png" alt="Step After Step" data-video-id="KwuP7D31f_k" />
+    <img class="myImg" src="video/album art.jpg" alt="Podcast: Brock XC" data-video-id="9lfQpZitWPQ" />
+    <img class="myImg" src="video/day.png" alt="THE DAY" data-video-id="zXJdm9Mm2J8" />
+    <img class="myImg" src="video/nonsense.png" alt="Non-Sense" data-video-id="w2dloV1WkBw" />
+    <img class="myImg" src="video/work.png" alt="Gotta Work" data-video-id="CVz2QE6uZRE" />
+    <img class="myImg" src="video/stickah.png" alt="sticker" data-video-id="WnqGVVMSvBM" />
+  </div>
+
+  <!-- Modal -->
+  <div id="myModal" class="modal">
+    <span class="close">&times;</span>
+    <iframe id="videoIframe" src="" frameborder="0" allowfullscreen allow="autoplay; encrypted-media"></iframe>
+    <div id="caption"></div>
+  </div>
+
+  <!-- Fixed Footer -->
+  <footer>
+    <p>
+      <a class="a" href="https://www.instagram.com/garrettwagersucks/">Instagram</a> /
+      <a class="a" href="https://www.youtube.com/@garrettwager">YouTube</a> /
+      <a class="a" href="info.html">About</a> /
+      <a class="a" href="mailto:chickenmanstergw@gmail.com">Contact</a> /
+      <a class="a" href="photos.html">Photos</a>
+    </p>
+  </footer>
+
+  <!-- JS Modal Logic -->
+  <script>
+    const modal = document.getElementById("myModal");
+    const iframe = document.getElementById("videoIframe");
+    const captionText = document.getElementById("caption");
+    const closeBtn = document.getElementsByClassName("close")[0];
+    const images = document.getElementsByClassName("myImg");
+
+    Array.from(images).forEach(img => {
+      img.addEventListener("click", () => {
+        const id = img.dataset.videoId;
+        iframe.src = `https://www.youtube.com/embed/${id}`;
+        captionText.textContent = img.alt;
+        modal.style.display = "flex";
+      });
+    });
+
+    closeBtn.onclick = () => {
+      modal.style.display = "none";
+      iframe.src = "";
+    };
+
+    window.onclick = event => {
+      if (event.target === modal) {
+        modal.style.display = "none";
+        iframe.src = "";
+      }
+    };
+  </script>
+
 </body>
 </html>
