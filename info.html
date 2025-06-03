@@ -452,16 +452,16 @@
     }
 
     .close {
-      position: absolute;
-      top: 15px;
-      right: 35px;
-      color: #f1f1f1;
-      font-size: 40px;
-      font-weight: bold;
-      cursor: pointer;
+        position: absolute;
+        top: 15px;
+        right: 35px;
+        color: #f1f1f1;
+        font-size: 40px;
+        font-weight: bold;
+        transition: 0.3s;
     }
 
-    .close:hover { color: #bbb; }
+    .close:hover, .close:focus { color: #bbb; }
 
     #darkModeToggle {
       position: fixed;
@@ -514,7 +514,7 @@
 
   <!-- The Modal -->
   <div id="myModal" class="modal">
-    <span class="close" id="modalClose">&times;</span>
+    <span class="close"></span>
     <img class="modal-content" id="img01">
     <div id="caption"></div>
   </div>
@@ -530,23 +530,47 @@
   </footer>
 
   <script>
-    // Modal functionality
-    const modal = document.getElementById("myModal");
-    const modalImg = document.getElementById("img01");
-    const captionText = document.getElementById("caption");
-    const modalClose = document.getElementById("modalClose");
+    var elements = document.getElementsByClassName("column");
 
-    document.querySelectorAll(".myImg").forEach(img => {
-      img.addEventListener("click", function () {
+    // Declare a loop variable
+    var i;
+    
+    function two() {
+        for (i = 0; i < elements.length; i++) {
+            elements[i].style.msFlex = "50%";  // IE10
+            elements[i].style.flex = "50%";
+        }
+    }
+
+    // Get the modal
+    var modal = document.getElementById("myModal");
+
+    // select images by class name
+    var img = document.getElementsByClassName('myImg');
+    var modalImg = document.getElementById("img01");
+    var captionText = document.getElementById("caption");
+    var bg = document.getElementsByClassName("ryan");
+
+    // show modal function
+    var showModal = function(){
         modal.style.display = "block";
         modalImg.src = this.src;
-        captionText.innerHTML = this.alt || "";
-      });
-    });
+        captionText.innerHTML = this.alt;
+        bg.style.opacity = 1;
+    }
 
-    modalClose.onclick = function () {
-      modal.style.display = "none";
-    };
+    // bind click event to each img
+    for (var i = 0; i < img.length; i++) {
+        img[i].addEventListener('click', showModal);
+    }
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("modal")[0];
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() { 
+        modal.style.display = "none";
+    }
 
     // Dark mode toggle
     const toggle = document.getElementById("darkModeToggle");
