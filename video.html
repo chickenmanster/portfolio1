@@ -232,6 +232,15 @@
       color: #000;
     }
 
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+    }
+
     header, footer {
       width: 100%;
       text-align: center;
@@ -255,15 +264,12 @@
     }
 
     footer {
-      position: relative;
-      bottom: 0;
-      background-color: #fff;
-      color: #000;
-      padding: 12px 10px;
-      font-size: 14px;
-      border-top: 1px solid #ccc;
-      left: 0;
-      margin-top: 0; /* Remove space above footer */
+        text-align: center;
+        padding: 3px;
+        position: relative; /* Changed from 'fixed' to 'relative' */
+        font-family: JetBrains Mono, monospace;
+        color: rgb(0, 0, 0);
+        margin-bottom: 0px;
     }
 
     .a {
@@ -275,20 +281,24 @@
       color: #888;
     }
 
+
+
     .image-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 16px;
-      padding: 0; /* Ensure no padding at the top */
-      margin-top: 0; /* Also set margin to 0 just in case */
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(auto, auto));
+        gap: 5px; /* tighter spacing */
+        justify-content: center; /* keeps grid centered */
+        flex: 1;
     }
 
     .image-grid img {
-      width: 100%;
-      height: 250px;
-      object-fit: cover;
-      cursor: pointer;
-      transition: transform 0.3s ease;
+        width: 100%;
+        max-width: 150px;
+        height: 100%; /* keeps original proportions */
+        max-height: fit-content;
+        object-fit: contain;
+        margin: auto;
+        display: block;
     }
 
     .image-grid img:hover {
